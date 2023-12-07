@@ -29,6 +29,7 @@ function update(time) {
     updateScore(delta);
 
     if (checkGameOver()) return handleGameOver();
+    if(checkGameFinis()) console.log("win");
 
     lastTime = time;
     window.requestAnimationFrame(update);
@@ -69,6 +70,10 @@ function checkCollision(rect1, rect2) {
 function checkGameOver() {
     const dinoRect = getDinoRect();
     return getCactusRects().some(rect => checkCollision(rect, dinoRect)); /* check collision with any of the cactus */
+}
+
+function checkGameFinis(){
+    return score >= 200;
 }
 
 function handleGameOver() {
@@ -194,13 +199,12 @@ function onJump(e) {
 /* ADD CACTUS */
 
 const CACTUS_SPEED = 0.05;
-const CACTUS_INTERVAL_MIN = 500;
-const CACTUS_INTERVAL_MAX = 2000;
+const CACTUS_INTERVAL = 2000;
 
 let nextCactusTime;
 
 function setupCactus() {
-    nextCactusTime = CACTUS_INTERVAL_MIN;
+    nextCactusTime = CACTUS_INTERVAL;
     document.querySelectorAll(".cactus").forEach(cactus => {
         cactus.remove(); /* remove cactus when game restart */
     })
