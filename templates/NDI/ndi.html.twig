@@ -1,8 +1,16 @@
 {% extends "base.html.twig" %}
 {% block title %}Nuit de l'Info 2023{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{ asset("css/ndi.css") }}">{% endblock %}
 {% block javascripts %} <script defer type="text/javascript" src="{{ asset("js/konamiCode.js") }}"></script> {% endblock %}
 {% block main %}
     <main>
-        <h1>BONJOUR</h1>
+        <div id="main-content">
+            <div id="question"><h1>De quels couleurs sont les pingouins?</h1> </div>
+            <div id="answers">
+                <div id="left-answer"><h1>Blanc et noir</h1></div>
+                <div id="right-answer"><h1>Bleu marine et gris</h1></div>
+            </div>
+            <div id="explanation"></div>
+        </div>
     </main>
 {% endblock %}

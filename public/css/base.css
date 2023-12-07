@@ -1,0 +1,89 @@
+:root {
+    --background-color: black;
+    --left-card-color: rgb(15, 165, 224);
+    --right-card-color: rgb(255, 0, 0);
+    --navbar-color: grey;
+    --police-color: white;
+    --light-effect-color: rgba(255, 255, 255, 0.2);
+    --transparent-effect: 50%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Courier New", system-ui;
+    color: var(--police-color);
+}
+
+#wallpaper {
+    /*background-color: var(--background-color);*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100vw;*/
+    /*height: 100vh;*/
+    z-index: -100;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    /*height: 50px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 50px;
+}
+
+nav a {
+    padding: 20px 25px 20px 25px;
+    border-radius: 10px;
+}
+
+
+
+main {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.light {
+    /*background-color: transparent;*/
+    /*border-radius: 10px;*/
+    position: relative;
+}
+
+.light:hover::before
+{
+    opacity: 1;
+}
+
+.light::before {
+    /*.card > .card-border{*/
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.light::before {
+    background: radial-gradient(
+            900px circle at var(--mouse-x) var(--mouse-y),
+            var(--light-effect-color),
+            transparent var(--transparent-effect)
+    );
+    z-index: -100;
+}
