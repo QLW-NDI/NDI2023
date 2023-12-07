@@ -8,9 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GeneralController extends AbstractController
 {
-    #[Route('/QLW', name: 'QLW')]
+    #[Route('/NDI', name: 'NDI')]
     public function index(): Response
     {
-        return $this->render('base.html.twig');
+        return $this->render('NDI/ndi.html.twig');
     }
 }
