@@ -1,2 +1,2 @@
 # NDI2023
-QLF mais QLW
+C'est comme QLF mais QLW
