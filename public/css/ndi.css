@@ -1,7 +1,7 @@
 #main-content {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 10vw);
     margin: 0 10vw 0 10vw;
 }
 
@@ -16,7 +16,7 @@
     flex: 1 1 auto;
     display: flex;
     justify-content: center;
-    margin-bottom: 10vw;
+    transition: flex 0.5s;
 }
 
 #left-answer {
@@ -29,6 +29,7 @@
     justify-content: center;
     align-items: center;
     border: solid 3px transparent;
+    transition: border 0.1s, width 0.5s;
 }
 
 #left-answer:hover {
@@ -49,7 +50,7 @@
     justify-content: center;
     align-items: center;
     border: solid 3px transparent;
-
+    transition: border 0.1s, width 0.5s;
 }
 
 #right-answer:hover {
@@ -58,4 +59,18 @@
 
 #right-answer:active {
     border-color: transparent;
+}
+
+#explanation {
+    width: 100%;
+    flex: 0 1 0;
+    background-color: grey;
+    border-radius: 20px;
+    margin-top: 10px;
+    transition: flex 1s;
+    /*padding: 20px;*/
+}
+
+#explanation * {
+    /*color: transparent;*/
 }
