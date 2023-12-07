@@ -15,112 +15,153 @@ class Question
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $question = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $prejudice = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $fact = null;
+    private ?string $theme = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    private ?string $question = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $answer_false = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $answer_true = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $explication = null;
 
     #[ORM\Column]
-    private ?int $nbPrejudice = 0;
+    private ?int $nb_click_true = 0;
 
     #[ORM\Column]
-    private ?int $nbFact = 0;
+    private ?int $nb_click_false = 0;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
     {
-        return $this->title;
+        $this->id = $id;
     }
 
-    public function setTitle(string $title): static
+    /**
+     * @return string|null
+     */
+    public function getTheme(): ?string
     {
-        $this->title = $title;
-
-        return $this;
+        return $this->theme;
     }
 
+    /**
+     * @param string|null $theme
+     */
+    public function setTheme(?string $theme): void
+    {
+        $this->theme = $theme;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getQuestion(): ?string
     {
         return $this->question;
     }
 
-    public function setQuestion(string $question): static
+    /**
+     * @param string|null $question
+     */
+    public function setQuestion(?string $question): void
     {
         $this->question = $question;
-
-        return $this;
     }
 
-    public function getPrejudice(): ?string
+    /**
+     * @return string|null
+     */
+    public function getAnswerFalse(): ?string
     {
-        return $this->prejudice;
+        return $this->answer_false;
     }
 
-    public function setPrejudice(string $prejudice): static
+    /**
+     * @param string|null $answer_false
+     */
+    public function setAnswerFalse(?string $answer_false): void
     {
-        $this->prejudice = $prejudice;
-
-        return $this;
+        $this->answer_false = $answer_false;
     }
 
-    public function getFact(): ?string
+    /**
+     * @return string|null
+     */
+    public function getAnswerTrue(): ?string
     {
-        return $this->fact;
+        return $this->answer_true;
     }
 
-    public function setFact(string $fact): static
+    /**
+     * @param string|null $answer_true
+     */
+    public function setAnswerTrue(?string $answer_true): void
     {
-        $this->fact = $fact;
-
-        return $this;
+        $this->answer_true = $answer_true;
     }
 
-    public function getDescription(): ?string
+    /**
+     * @return string|null
+     */
+    public function getExplication(): ?string
     {
-        return $this->description;
+        return $this->explication;
     }
 
-    public function setDescription(string $description): static
+    /**
+     * @param string|null $explication
+     */
+    public function setExplication(?string $explication): void
     {
-        $this->description = $description;
-
-        return $this;
+        $this->explication = $explication;
     }
 
-    public function getNbPrejudice(): ?int
+    /**
+     * @return int|null
+     */
+    public function getNbClickTrue(): ?int
     {
-        return $this->nbPrejudice;
+        return $this->nb_click_true;
     }
 
-    public function setNbPrejudice(int $nbPrejudice): static
+    /**
+     * @param int|null $nb_click_true
+     */
+    public function setNbClickTrue(?int $nb_click_true): void
     {
-        $this->nbPrejudice = $nbPrejudice;
-
-        return $this;
+        $this->nb_click_true = $nb_click_true;
     }
 
-    public function getNbFact(): ?string
+    /**
+     * @return int|null
+     */
+    public function getNbClickFalse(): ?int
     {
-        return $this->nbFact;
+        return $this->nb_click_false;
     }
 
-    public function setNbFact(string $nbFact): static
+    /**
+     * @param int|null $nb_click_false
+     */
+    public function setNbClickFalse(?int $nb_click_false): void
     {
-        $this->nbFact = $nbFact;
-
-        return $this;
+        $this->nb_click_false = $nb_click_false;
     }
+
+
 }
