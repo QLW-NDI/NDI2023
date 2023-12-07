@@ -4,6 +4,7 @@ const game = document.querySelector("#game");
 const scoreDisplay = document.querySelector("#score");
 const startMessage = document.querySelector("#start-message");
 const gameoverMessage = document.querySelector("#gameover-message");
+const winMessage = document.querySelector("#win-message");
 
 document.addEventListener("keydown", startGame, { once: true });
 
@@ -29,7 +30,7 @@ function update(time) {
     updateScore(delta);
 
     if (checkGameOver()) return handleGameOver();
-    if(checkGameFinis()) console.log("win");
+    if(checkGameFinis()) return handleGameWin();
 
     lastTime = time;
     window.requestAnimationFrame(update);
@@ -44,6 +45,7 @@ function startGame() {
     setupCactus();
     startMessage.classList.add("hide");
     gameoverMessage.classList.add("hide");
+    winMessage.classList.add("hide");
     window.requestAnimationFrame(update);
 }
 
@@ -82,6 +84,13 @@ function handleGameOver() {
         document.addEventListener("keydown", startGame, { once: true }); /* prevents accidental click */
         gameoverMessage.classList.remove("hide");
     }, 100);
+}
+
+function handleGameWin() {
+    setTimeout(()=>{
+        document.addEventListener("keydown",startGame,{once:true});
+        winMessage.classList.remove("hide");
+    })
 }
 
 
@@ -199,7 +208,7 @@ function onJump(e) {
 /* ADD CACTUS */
 
 const CACTUS_SPEED = 0.05;
-const CACTUS_INTERVAL = 2000;
+const CACTUS_INTERVAL = 1500;
 
 let nextCactusTime;
 
@@ -220,7 +229,7 @@ function updateCactus(delta, speedScale) {
 
     if (nextCactusTime <= 0) {
         createCactus();
-        nextCactusTime = 2000 / speedScale;
+        nextCactusTime = CACTUS_INTERVAL / speedScale;
     }
     nextCactusTime -= delta;
 }
