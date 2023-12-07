@@ -216,8 +216,7 @@ function updateCactus(delta, speedScale) {
 
     if (nextCactusTime <= 0) {
         createCactus();
-        nextCactusTime =
-            randomizer(CACTUS_INTERVAL_MIN, CACTUS_INTERVAL_MAX) / speedScale;
+        nextCactusTime = 2000 / speedScale;
     }
     nextCactusTime -= delta;
 }
@@ -234,8 +233,4 @@ function createCactus() {
     cactus.classList.add("cactus");
     setCustomProperty(cactus, "--left", 100);
     game.append(cactus);
-}
-
-function randomizer(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min); /* choose a number between minimum and maximum */
 }
