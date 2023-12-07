@@ -13,4 +13,10 @@ class GeneralController extends AbstractController
     {
         return $this->render('NDI/ndi.html.twig');
     }
+
+    #[Route('/dino',name:'dino')]
+    public function dino(): Response
+    {
+        return $this->render('NDI/dino.html.twig');
+    }
 }
