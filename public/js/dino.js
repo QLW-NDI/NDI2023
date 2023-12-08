@@ -5,7 +5,6 @@ const scoreDisplay = document.querySelector("#score");
 const startMessage = document.querySelector("#start-message");
 const gameoverMessage = document.querySelector("#gameover-message");
 const winMessage = document.querySelector("#win-message");
-const dino = document.querySelector("#dino");
 
 document.addEventListener("keydown", startGame, { once: true });
 
