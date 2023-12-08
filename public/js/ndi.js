@@ -36,7 +36,7 @@ function showExplanation() {
         answerBox.style.width = "100%";
         Array.from(children).forEach(child => {
             child.style.fontSize = "initial"
-            child.style.visibility = "visible";
+            // child.style.visibility = "visible";
         });
         setTimeout(function() {
             answerBox.style.width = "calc(100% - 100px)";
@@ -45,6 +45,45 @@ function showExplanation() {
             next.style.fontSize = "xxx-large";
         }, 2000);
     }, 500);
+}
+
+function resetAnswers() {
+    let children = explanation.children;
+
+    answerBox.style.width = "100%";
+    next.style.width = "0";
+    next.style.marginLeft = "0";
+    next.style.fontSize = "0";
+
+    setTimeout(function() {
+        answers.style.flex= "1 1 auto";
+
+        mainContent.style.height = "calc(100% - 10vw)";
+        explanation.style.padding = "0";
+        explanation.style.height = "0";
+        contentBox.style.flex = "1 1 auto";
+        answerBox.style.width = "auto"
+        Array.from(children).forEach(child => {
+            child.style.fontSize = "0"
+            // child.style.visibility = "visible";
+        });
+
+        setTimeout(function(){
+
+
+            leftAnswer.style.width = "50%";
+            leftAnswer.innerHTML = "<h1>"+"réponse 1"+"</h1>";
+            rightAnswer.style.width = "50%";
+            rightAnswer.innerHTML = "<h1>"+"réponse 2"+"</h1>";
+
+            leftAnswer.style.pointerEvents = "auto";
+            rightAnswer.style.pointerEvents = "auto";
+        }, 500);
+    }, 500);
+
+
+
+
 }
 
 const handleOnLeftAnswerClick = e => {
@@ -57,5 +96,10 @@ const handleOnRightAnswerClick = e => {
     setTimeout(showExplanation, 1000);
 }
 
+const handleOnNextClick = e => {
+    resetAnswers();
+}
+
 leftAnswer.onclick = e => handleOnLeftAnswerClick(e);
 rightAnswer.onclick = e => handleOnRightAnswerClick(e);
+next.onclick = e => handleOnNextClick(e);
