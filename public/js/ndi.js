@@ -101,15 +101,11 @@ function loadQuestionsData() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var data = JSON.parse(xhr.responseText);
             array = data.array;
-            console.log(array);
         }
     };
-
     xhr.open('GET', 'getQuestionContent', false);
     xhr.send();
-
     fillQuestionsFields();
-
 }
 
 function fillQuestionsFields() {
@@ -124,19 +120,24 @@ function fillQuestionsFields() {
         }
         explanationText.innerHTML = array[0].explanation;
     }
-    console.log(rightAnswer.innerText);
 }
 
 
 leftAnswer.onclick = e => {
     if (leftAnswer.innerText === array[0].answerTrue) {
         validAnswer ++;
+        incrementValid();
+    } else {
+        incrementFalse();
     }
     handleOnLeftAnswerClick(e);
 };
 rightAnswer.onclick = e => {
     if (rightAnswer.innerText === array[0].answerTrue) {
         validAnswer ++;
+        incrementValid();
+    } else {
+        incrementFalse();
     }
     handleOnRightAnswerClick(e);
 };
@@ -148,3 +149,29 @@ next.onclick = e => {
     array.shift();
     handleOnNextClick(e);
 };
+
+function incrementValid() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            array = data.array;
+        }
+    };
+    xhr.open('GET', 'incrementTrue/' + array[0].id, false);
+    xhr.send();
+}
+
+function incrementFalse() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            array = data.array;
+        }
+    };
+    xhr.open('GET', 'incrementFalse/' + array[0].id, false);
+    xhr.send();
+}
