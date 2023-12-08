@@ -57,6 +57,12 @@ function showExplanation() {
 
 function resetAnswers() {
     let children = explanation.children;
+
+    leftAnswer.removeEventListener("click", handleLeftFalse);
+    leftAnswer.removeEventListener("click", handleRightFalse);
+    rightAnswer.removeEventListener("click", handleLeftFalse);
+    rightAnswer.removeEventListener("click", handleRightFalse);
+
     leftAnswer.style.filter = "opacity(1)";
     rightAnswer.style.filter = "opacity(1)";
 
@@ -126,6 +132,14 @@ function loadQuestionsData() {
 
 }
 
+function handleLeftFalse() {
+    leftAnswer.style.filter = "opacity(0.5)";
+}
+
+function handleRightFalse() {
+    rightAnswer.style.filter = "opacity(0.5)";
+}
+
 function fillQuestionsFields() {
     if (array.length > 0) {
         question.innerHTML = "<h1>" + array[0].question + "</h1>";
@@ -136,7 +150,8 @@ function fillQuestionsFields() {
             rightPercentage =  array[0].nbClickFalse / (array[0].nbClickTrue + array[0].nbClickFalse) * 100;
             rightPercentage = Math.round(rightPercentage)+"%";
             leftPercentage = Math.round(leftPercentage)+"%";
-
+            rightAnswer.addEventListener("click",handleRightFalse);
+            leftAnswer.addEventListener("click",handleRightFalse);
 
         } else {
             rightAnswer.innerHTML = "<h1>" + array[0].answerTrue + "</h1>";
@@ -145,6 +160,8 @@ function fillQuestionsFields() {
             leftPercentage =  array[0].nbClickFalse / (array[0].nbClickTrue + array[0].nbClickFalse) *100;
             rightPercentage = Math.round(rightPercentage)+"%";
             leftPercentage = Math.round(leftPercentage)+"%";
+            rightAnswer.addEventListener("click",handleLeftFalse);
+            leftAnswer.addEventListener("click",handleLeftFalse);
         }
         answerTrue = array[0].answerTrue;
         rightAnswerText = rightAnswer.textContent;
