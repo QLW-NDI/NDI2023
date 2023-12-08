@@ -18,7 +18,7 @@ class QuestionController extends AbstractController
         return $this->render('NDI/ndi.html.twig');
     }
 
-    #[Route('/getQuestionContent', name: 'getQuestionContent')]
+    #[Route('/getQuestionContent', name: 'getQuestionContent', methods: ['POST'])]
     public function sendQuestionsData(QuestionRepository $questionRepository) : JsonResponse
     {
         $allQuestions = $questionRepository->findAll();
@@ -34,7 +34,7 @@ class QuestionController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/incrementTrue/{id}', name: 'incrementTrue')]
+    #[Route('/incrementTrue/{id}', name: 'incrementTrue', methods: ['POST'])]
     public function updateNbClickTrue(EntityManagerInterface $interface, QuestionRepository $questionRepository, int $id) : JsonResponse {
         $question = $questionRepository->find($id);
         $question->setNbClickTrue(($question->getNbClickTrue() + 1));
@@ -43,7 +43,7 @@ class QuestionController extends AbstractController
         return $this->json(null);
     }
 
-    #[Route('/incrementFalse/{id}', name: 'incrementFalse')]
+    #[Route('/incrementFalse/{id}', name: 'incrementFalse', methods: ['POST'])]
     public function updateNbClickFalse(EntityManagerInterface $interface, QuestionRepository $questionRepository, int $id) : JsonResponse {
         $question = $questionRepository->find($id);
         $question->setNbClickFalse(($question->getNbClickFalse() + 1));
@@ -51,4 +51,13 @@ class QuestionController extends AbstractController
         $interface->flush();
         return $this->json(null);
     }
+
+    #[Route('/updateClick', name:'updateClick', methods: ['POST'])]
+    public function updateClick(){
+
+    }
+
+
+
+
 }

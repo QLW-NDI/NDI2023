@@ -179,7 +179,7 @@ function incrementValid() {
             array = data.array;
         }
     };
-    xhr.open('GET', 'incrementTrue/' + array[0].id, false);
+    xhr.open('POST', 'incrementTrue/' + array[0].id, false);
     xhr.send();
 }
 
@@ -192,6 +192,6 @@ function incrementFalse() {
             array = data.array;
         }
     };
-    xhr.open('GET', 'incrementFalse/' + array[0].id, false);
+    xhr.open('POST', 'incrementFalse/' + array[0].id, false);
     xhr.send();
 }
