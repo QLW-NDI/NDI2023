@@ -13,14 +13,13 @@
     </head>
     <body>
     <div id="wallpaper"></div>
+    <img id="j-o" src="{{ asset("img/jo.gif") }}">
     <header>
         <nav>
             <a class="light" href="{{ path("questionList") }}">QLW</a>
             <a class="light" href="{{ path("wiki") }}">En savoir plus</a>
-            <a class="light">Contacts</a>
         </nav>
     </header>
-
         {% block main %}{% endblock %}
     </body>
 </html>

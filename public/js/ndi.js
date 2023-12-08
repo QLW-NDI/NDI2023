@@ -14,6 +14,8 @@ let contentBox = document.getElementById("content-box");
 let answerBox = document.getElementById("answer-box");
 
 let explanationText = document.getElementById("explanationText");
+let gameOver = document.getElementById("gameOver");
+
 
 window.onload = function () {
     loadQuestionsData();
@@ -55,6 +57,9 @@ function showExplanation() {
 
 function resetAnswers() {
     let children = explanation.children;
+    leftAnswer.style.filter = "opacity(1)";
+    rightAnswer.style.filter = "opacity(1)";
+
     next.style.width = "0";
     next.style.marginLeft = "0";
     next.style.fontSize = "0";
@@ -110,7 +115,7 @@ function loadQuestionsData() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var data = JSON.parse(xhr.responseText);
             array = data.array;
-            console.log(array);
+            // console.log(array);
         }
     };
 
@@ -122,7 +127,7 @@ function loadQuestionsData() {
 }
 
 function fillQuestionsFields() {
-    if (array.length !== 0) {
+    if (array.length > 0) {
         question.innerHTML = "<h1>" + array[0].question + "</h1>";
         if (Math.random() < 0.5) {
             rightAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
@@ -146,6 +151,9 @@ function fillQuestionsFields() {
         leftAnswerText = leftAnswer.textContent;
         explanationText.innerHTML = array[0].explanation;
         array.shift();
+    }
+    else {
+        endGame();
     }
 }
 
@@ -186,6 +194,13 @@ function incrementValid() {
     };
     xhr.open('POST', 'incrementTrue/' + array[0].id, false);
     xhr.send();
+}
+
+function endGame() {
+    mainContent.style.filter = "opacity(0)";
+    mainContent.style.pointerEvents = "none";
+    gameOver.style.filter = "opacity(1)";
+    gameOver.style.zIndex = "10";
 }
 
 function incrementFalse() {

@@ -23,5 +23,13 @@
                 <div id="next" class="light">></div>
             </div>
         </div>
+        <div id="gameOver">
+            <div>Merci d'avoir joué !</div>
+            <div id="score-div">
+                <div >Votre score : </div>
+                <div id="score">50</div>
+            </div>
+            <a href="{{ path("questionList") }}" id="retry" class="light">Rejouer</a>
+        </div>
     </main>
 {% endblock %}
