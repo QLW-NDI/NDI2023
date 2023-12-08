@@ -242,7 +242,7 @@ function getCactusRects() {
 
 function createCactus() {
     const cactus = document.createElement("img");
-    cactus.src = "assets/barriere.png";
+    cactus.src = "assets/barriere3.png";
     cactus.classList.add("cactus");
     setCustomProperty(cactus, "--left", 100);
     game.append(cactus);

@@ -76,6 +76,7 @@ body {
 .dino {
     --bottom: 0;
     height: 30%;
+    width: 5%;
     position: absolute;
     left: 1%;
     bottom: calc(var(--bottom) * 1%);
@@ -83,6 +84,7 @@ body {
 
 .cactus {
     height: 30%;
+    width: 10%;
     position: absolute;
     bottom: 0;
     left: calc(var(--left) * 1%);
