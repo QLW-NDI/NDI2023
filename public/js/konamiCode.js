@@ -9,7 +9,7 @@ document.onkeyup = function(e) {
 
     if (JSON.stringify(konamiCode) === JSON.stringify(input)){
         console.log("KONAMI CODE REUSSI");
-        window.location.href = "/dino";
+        window.location.href = "dino";
     }
     if (input.length >= konamiCode.length){
         input.shift();
