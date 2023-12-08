@@ -21,16 +21,16 @@ class Question
     private ?string $question = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $answer_false = null;
+    private ?string $answerFalse = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $answer_true = null;
+    private ?string $answerTrue = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $explication = null;
+    private ?string $explanation = null;
 
-    #[ORM\Column]
-    private ?int $nb_click_true = 0;
+    #[ORM\Column(options: ['default' => 0])]
+    private ?int $nbClickTrue = 0;
 
     #[ORM\Column]
     private ?int $nb_click_false = 0;
@@ -88,7 +88,7 @@ class Question
      */
     public function getAnswerFalse(): ?string
     {
-        return $this->answer_false;
+        return $this->answerFalse;
     }
 
     /**
@@ -96,7 +96,7 @@ class Question
      */
     public function setAnswerFalse(?string $answer_false): void
     {
-        $this->answer_false = $answer_false;
+        $this->answerFalse = $answer_false;
     }
 
     /**
@@ -104,31 +104,31 @@ class Question
      */
     public function getAnswerTrue(): ?string
     {
-        return $this->answer_true;
+        return $this->answerTrue;
     }
 
     /**
      * @param string|null $answer_true
      */
-    public function setAnswerTrue(?string $answer_true): void
+    public function setAnswerTrue(?string $answerTrue): void
     {
-        $this->answer_true = $answer_true;
+        $this->answerTrue = $answerTrue;
     }
 
     /**
      * @return string|null
      */
-    public function getExplication(): ?string
+    public function getExplanation(): ?string
     {
-        return $this->explication;
+        return $this->explanation;
     }
 
     /**
-     * @param string|null $explication
+     * @param string|null $explanation
      */
-    public function setExplication(?string $explication): void
+    public function setExplanation(?string $explanation): void
     {
-        $this->explication = $explication;
+        $this->explanation = $explanation;
     }
 
     /**
@@ -136,11 +136,11 @@ class Question
      */
     public function getNbClickTrue(): ?int
     {
-        return $this->nb_click_true;
+        return $this->nbClickTrue;
     }
 
     /**
-     * @param int|null $nb_click_true
+     * @param int|null $nbClickTrue
      */
     public function setNbClickTrue(?int $nb_click_true): void
     {
@@ -158,9 +158,9 @@ class Question
     /**
      * @param int|null $nb_click_false
      */
-    public function setNbClickFalse(?int $nb_click_false): void
+    public function setNbClickFalse(?int $nbClickFalse): void
     {
-        $this->nb_click_false = $nb_click_false;
+        $this->nbClickFalse = $nbClickFalse;
     }
 
 

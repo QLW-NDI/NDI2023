@@ -8,6 +8,14 @@ let next = document.getElementById("next");
 let contentBox = document.getElementById("content-box");
 let answerBox = document.getElementById("answer-box");
 
+let explanationText = document.getElementById("explanationText")
+
+window.onload = function () {
+    loadQuestionsData();
+};
+
+let array;
+
 function resizeAnswers(leftPercentage, rightPercentage) {
     leftAnswer.style.pointerEvents = "none";
     rightAnswer.style.pointerEvents = "none";
@@ -54,11 +62,10 @@ function resetAnswers() {
         mainContent.style.height = "calc(100% - 10vw)";
         answers.style.flex= "1 1 auto";
         leftAnswer.style.width = "50%";
-        leftAnswer.innerHTML = "<h1>"+"réponse 1"+"</h1>";
         rightAnswer.style.width = "50%";
-        rightAnswer.innerHTML = "<h1>"+"réponse 2"+"</h1>";
         leftAnswer.style.pointerEvents = "auto";
         rightAnswer.style.pointerEvents = "auto";
+        fillQuestionsFields();
     }, 500);
 }
 
@@ -72,10 +79,11 @@ const handleOnRightAnswerClick = e => {
     setTimeout(showExplanation, 1000);
 }
 
-const handleOnNextClick = e => {
-    resetAnswers();
-}
 
 leftAnswer.onclick = e => handleOnLeftAnswerClick(e);
 rightAnswer.onclick = e => handleOnRightAnswerClick(e);
+
+next.onclick = function (){
+    fillQuestionsFields();
+}
 next.onclick = e => handleOnNextClick(e);
