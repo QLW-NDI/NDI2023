@@ -67,7 +67,7 @@ function resetAnswers() {
         rightAnswer.style.width = "50%";
         leftAnswer.style.pointerEvents = "auto";
         rightAnswer.style.pointerEvents = "auto";
-        fillQuestionsFields();
+        setTimeout(fillQuestionsFields, 500);
     }, 500);
 }
 

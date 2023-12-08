@@ -52,7 +52,7 @@
 #left-answer {
     min-width: 5%;
     width: 50%;
-    height: 100%;
+    height: calc(100% - 26px);
     background-color: var(--left-card-color);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -61,6 +61,7 @@
     align-items: center;
     border: solid 3px transparent;
     transition: border 0.1s, width 0.5s;
+    padding: 10px;
 }
 
 #left-answer:hover {
@@ -74,7 +75,7 @@
 #right-answer {
     min-width: 5%;
     width: 50%;
-    height: 100%;
+    height: calc(100% - 26px);
     background-color: var(--right-card-color);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -83,6 +84,7 @@
     align-items: center;
     border: solid 3px transparent;
     transition: border 0.1s, width 0.5s;
+    padding: 10px;
 }
 
 #right-answer:hover {
@@ -108,6 +110,10 @@
     /*visibility: hidden;*/
     transition: font-size 0.3s ease-in-out;
     font-size: 0;
+}
+
+#explanation p {
+    font-size: large;
 }
 
 #explanation h3 {
