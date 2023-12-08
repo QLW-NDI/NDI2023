@@ -50,6 +50,7 @@
 }
 
 #left-answer {
+    min-width: 5%;
     width: 50%;
     height: 100%;
     background-color: var(--left-card-color);
@@ -71,6 +72,7 @@
 }
 
 #right-answer {
+    min-width: 5%;
     width: 50%;
     height: 100%;
     background-color: var(--right-card-color);

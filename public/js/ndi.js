@@ -53,7 +53,7 @@ const handleOnLeftAnswerClick = e => {
 }
 
 const handleOnRightAnswerClick = e => {
-    resizeAnswers("80%", "20%");
+    resizeAnswers("100%", "0%");
     setTimeout(showExplanation, 1000);
 }
 
