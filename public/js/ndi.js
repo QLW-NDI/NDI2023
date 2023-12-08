@@ -13,6 +13,9 @@ let answerBox = document.getElementById("answer-box");
 
 
 function resizeAnswers(leftPercentage, rightPercentage) {
+    leftAnswer.style.pointerEvents = "none";
+    rightAnswer.style.pointerEvents = "none";
+
     leftAnswer.style.width = leftPercentage;
     leftAnswer.innerHTML = "<h1>"+leftPercentage+"</h1>";
     rightAnswer.style.width = rightPercentage;
@@ -45,17 +48,13 @@ function showExplanation() {
 }
 
 const handleOnLeftAnswerClick = e => {
-    leftAnswer.style.pointerEvents = "none";
-    rightAnswer.style.pointerEvents = "none";
     resizeAnswers("20%", "80%");
-    // showExplanation();
     setTimeout(showExplanation, 1000);
 }
 
 const handleOnRightAnswerClick = e => {
-    leftAnswer.style.pointerEvents = "none";
-    rightAnswer.style.pointerEvents = "none";
-    resizeAnswers("80%", "20%")
+    resizeAnswers("80%", "20%");
+    setTimeout(showExplanation, 1000);
 }
 
 leftAnswer.onclick = e => handleOnLeftAnswerClick(e);
