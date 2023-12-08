@@ -168,18 +168,18 @@ function getDinoRect() {
 }
 
 function setDinoLose() {
-    dino.src = "assets/dino-lose.png";
+    dino.src = "assets/coureur_loose.png";
 }
 
 function handleRun(delta, speedScale) {
     if (isJumping) {
-        dino.src = `assets/dino-stationary.png`;
+        dino.src = `assets/coureur_jump.png`;
         return;
     }
 
     if (currentFrameTime >= FRAME_TIME) {
         dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT;
-        dino.src = `assets/dino-run-${dinoFrame}.png`; /* switch between images to simulate movement */
+        dino.src = `assets/coureur_run${dinoFrame}.png`; /* switch between images to simulate movement */
         currentFrameTime -= FRAME_TIME;
     }
     currentFrameTime += delta * speedScale;
@@ -242,7 +242,7 @@ function getCactusRects() {
 
 function createCactus() {
     const cactus = document.createElement("img");
-    cactus.src = "assets/cactus.png";
+    cactus.src = "assets/barriere.png";
     cactus.classList.add("cactus");
     setCustomProperty(cactus, "--left", 100);
     game.append(cactus);
