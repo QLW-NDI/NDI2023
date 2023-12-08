@@ -52,7 +52,7 @@
 #left-answer {
     min-width: 5%;
     width: 50%;
-    height: calc(100% - 26px);
+    height: calc(100% - 46px);
     background-color: var(--left-card-color);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -75,7 +75,7 @@
 #right-answer {
     min-width: 5%;
     width: 50%;
-    height: calc(100% - 26px);
+    height: calc(100% - 46px);
     background-color: var(--right-card-color);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;

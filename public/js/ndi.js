@@ -39,7 +39,7 @@ function showExplanation() {
         Array.from(children).forEach(child => {
             child.style.fontSize = "initial"
         });
-        explanationText.style.fontSize = "xx-large";
+        explanationText.style.fontSize = "large";
         setTimeout(function() {
             answerBox.style.width = "calc(100% - 100px)";
             next.style.width = "100px";
