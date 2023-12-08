@@ -1,4 +1,7 @@
 let i = 0;
+let leftPercentage = 0;
+let rightPercentage = 0;
+
 let leftAnswer = document.getElementById("left-answer");
 let rightAnswer = document.getElementById("right-answer");
 let question = document.getElementById("question")
@@ -18,13 +21,14 @@ window.onload = function () {
 
 let array;
 
-function resizeAnswers(leftPercentage, rightPercentage) {
+function resizeAnswers() {
     leftAnswer.style.pointerEvents = "none";
     rightAnswer.style.pointerEvents = "none";
     leftAnswer.style.width = leftPercentage;
     leftAnswer.innerHTML = "<h1>"+leftPercentage+"</h1>";
     rightAnswer.style.width = rightPercentage;
     rightAnswer.innerHTML = "<h1>"+rightPercentage+"</h1>";
+    resetPercent();
 }
 
 function showExplanation() {
@@ -86,6 +90,11 @@ const handleOnNextClick = e => {
     resetAnswers();
 }
 
+function resetPercent(){
+    leftPercentage = 0;
+    rightPercentage = 0;
+}
+
 function fillLeftPanel(strToPut) {
     leftAnswer.innerHTML = "<h1>" + strToPut + "</h1>";
 }
@@ -105,7 +114,7 @@ function loadQuestionsData() {
         }
     };
 
-    xhr.open('GET', 'getQuestionContent', false);
+    xhr.open('POST', 'getQuestionContent', false);
     xhr.send();
 
     fillQuestionsFields();
@@ -118,11 +127,23 @@ function fillQuestionsFields() {
         if (Math.random() < 0.5) {
             rightAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
             leftAnswer.innerHTML = "<h1>" + array[0].answerTrue + "</h1>";
+            leftPercentage =  array[0].nbClickTrue / (array[0].nbClickTrue + array[0].nbClickFalse) * 100;
+            rightPercentage =  array[0].nbClickFalse / (array[0].nbClickTrue + array[0].nbClickFalse) * 100;
+            rightPercentage = Math.round(rightPercentage)+"%";
+            leftPercentage = Math.round(leftPercentage)+"%";
+            
         } else {
             rightAnswer.innerHTML = "<h1>" + array[0].answerTrue + "</h1>";
             leftAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
+            rightPercentage =  array[0].nbClickTrue / (array[0].nbClickTrue + array[0].nbClickFalse) *100;
+            leftPercentage =  array[0].nbClickFalse / (array[0].nbClickTrue + array[0].nbClickFalse) *100;
+            rightPercentage = Math.round(rightPercentage)+"%";
+            leftPercentage = Math.round(leftPercentage)+"%";
         }
+
+
         explanationText.innerHTML = array[0].explanation;
+        
         array.shift();
     }
 }
