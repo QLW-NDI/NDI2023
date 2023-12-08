@@ -8,9 +8,23 @@
     <main>
         <div id="wiki-nav">
             <h3>Bienvenue sur la page pour en savoir plus !</h3>
-            <form class="search-bar" method="post" action=" ">
-                <label class="light">
-                    <input type="text" name="searchTerm" placeholder="Rechercher...">
+            <form class="search-bar" method="post" action="{{ path("searchTheme") }}">
+                <label>
+                    <select name="searchTerm">
+                        <option value="Consommation">Consommation</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Technologie">Technologie</option>
+                        <option value="Énergie">Énergie</option>
+                        <option value="Climat">Climat</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Recyclage">Recyclage</option>
+                        <option value="Environnement">Environnement</option>
+                        <option value="Biodiversité">Biodiversité</option>
+                        <option value="Politiques Climatiques">Politiques Climatiques</option>
+                        <option value="Coopération Internationale">Coopération Internationale</option>
+                        <option value="Industrie">Industrie</option>
+                        <option value="Éducation">Éducation</option>
+                    </select>
                 </label>
                 <button type="submit" class="search-button"><img src="{{ asset("img/search.svg") }}" alt="Rechercher"></button>
             </form>
@@ -21,10 +35,12 @@
                 <td><strong>Questions</strong></td>
                 <td><strong>Thèmes</strong></td>
             </tr>
+            {% for question in questions %}
             <tr class="light">
-                <td><a href="">Ls pingouins sont ils carnivores?</a></td>
-                <td>Pingouin</td>
+                <td><a href="">{{ question.question }}</a></td>
+                <td>{{ question.theme }}</td>
             </tr>
+            {% endfor %}
         </table>
 
 

@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Repository\QuestionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -49,15 +51,6 @@ class QuestionController extends AbstractController
         $interface->flush();
         return $this->json(null);
     }
-
-    #[Route('/updateClick', name:'updateClick', methods: ['POST'])]
-    public function updateClick(){
-
-    }
-
-
-
-
 
     #[Route('/dino',name:'dino')]
     public function dino(): Response
