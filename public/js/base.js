@@ -22,6 +22,8 @@ function joTheme() {
     wallpaper.style.filter = "opacity(1)";
     root.style.setProperty('--left-card-color', 'rgb(15, 165, 224, 0.3)')
     root.style.setProperty('--right-card-color', 'rgb(255, 0, 0, 0.3)')
+    root.style.setProperty('--navbar-color', 'rgba(128, 128, 128, 0.3)')
+
     // root.style.setProperty('--police-color', 'rgb(255, 0, 0, 0.3)')
 
 }
@@ -30,6 +32,7 @@ function joThemeUnset() {
     wallpaper.style.filter = "opacity(0)";
     root.style.setProperty('--left-card-color', 'rgb(15, 165, 224)')
     root.style.setProperty('--right-card-color', 'rgb(255, 0, 0)')
+    root.style.setProperty('--navbar-color', 'rgba(128, 128, 128)')
     // root.style.setProperty('--police-color', 'rgb(255, 0, 0, 0.3)')
 
 }

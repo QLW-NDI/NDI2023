@@ -102,7 +102,7 @@
     /*width: 100%;*/
     flex: 0 1 0;
     height: 0;
-    background-color: grey;
+    background-color: var(--navbar-color);
     border-radius: 20px;
     margin-top: 10px;
     transition: flex 1s, padding 0.5s, height 0.5s;
