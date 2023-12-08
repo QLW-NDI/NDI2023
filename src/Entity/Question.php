@@ -32,9 +32,8 @@ class Question
     #[ORM\Column(options: ['default' => 0])]
     private ?int $nbClickTrue = 0;
 
-    #[ORM\Column]
-    private ?int $nb_click_false = 0;
-
+    #[ORM\Column(options: ['default' => 0])]
+    private ?int $nbClickFalse = 0;
     /**
      * @return int|null
      */
@@ -108,7 +107,7 @@ class Question
     }
 
     /**
-     * @param string|null $answer_true
+     * @param string|null $answerTrue
      */
     public function setAnswerTrue(?string $answerTrue): void
     {
@@ -142,9 +141,9 @@ class Question
     /**
      * @param int|null $nbClickTrue
      */
-    public function setNbClickTrue(?int $nb_click_true): void
+    public function setNbClickTrue(?int $nbClickTrue): void
     {
-        $this->nb_click_true = $nb_click_true;
+        $this->nbClickTrue = $nbClickTrue;
     }
 
     /**
@@ -152,16 +151,15 @@ class Question
      */
     public function getNbClickFalse(): ?int
     {
-        return $this->nb_click_false;
+        return $this->nbClickFalse;
     }
 
     /**
-     * @param int|null $nb_click_false
+     * @param int|null $nbClickFalse
      */
     public function setNbClickFalse(?int $nbClickFalse): void
     {
         $this->nbClickFalse = $nbClickFalse;
     }
-
 
 }

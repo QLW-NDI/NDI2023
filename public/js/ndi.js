@@ -1,6 +1,8 @@
 let i = 0;
 let leftAnswer = document.getElementById("left-answer");
 let rightAnswer = document.getElementById("right-answer");
+let question = document.getElementById("question")
+
 let answers = document.getElementById("answers");
 let explanation = document.getElementById("explanation");
 let mainContent = document.getElementById("main-content");
@@ -77,6 +79,51 @@ const handleOnLeftAnswerClick = e => {
 const handleOnRightAnswerClick = e => {
     resizeAnswers("100%", "0%");
     setTimeout(showExplanation, 1000);
+}
+
+const handleOnNextClick = e => {
+    resetAnswers();
+}
+
+function fillLeftPanel(strToPut) {
+    leftAnswer.innerHTML = "<h1>" + strToPut + "</h1>";
+}
+
+function fillRightPanel(strToPut) {
+    rightAnswer.innerHTML = "<h1>" + strToPut + "</h1>";
+}
+
+function loadQuestionsData() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            array = data.array;
+            console.log(array);
+        }
+    };
+
+    xhr.open('GET', 'getQuestionContent', false);
+    xhr.send();
+
+    fillQuestionsFields();
+
+}
+
+function fillQuestionsFields() {
+    if (array.length !== 0) {
+        question.innerHTML = "<h1>" + array[0].question + "</h1>";
+        if (Math.random() < 0.5) {
+            rightAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
+            leftAnswer.innerHTML = "<h1>" + array[0].answerTrue + "</h1>";
+        } else {
+            rightAnswer.innerHTML = "<h1>" + array[0].answerTrue + "</h1>";
+            leftAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
+        }
+        explanationText.innerHTML = array[0].explanation;
+        array.shift();
+    }
 }
 
 
