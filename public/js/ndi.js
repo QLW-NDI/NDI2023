@@ -50,36 +50,47 @@ function showExplanation() {
 function resetAnswers() {
     let children = explanation.children;
 
-    answerBox.style.width = "100%";
+    // answerBox.style.width = "100%";
     next.style.width = "0";
     next.style.marginLeft = "0";
     next.style.fontSize = "0";
 
-    setTimeout(function() {
-        answers.style.flex= "1 1 auto";
+    answerBox.style.width = "100%";
 
-        mainContent.style.height = "calc(100% - 10vw)";
-        explanation.style.padding = "0";
-        explanation.style.height = "0";
-        contentBox.style.flex = "1 1 auto";
-        answerBox.style.width = "auto"
+    setTimeout(function(){
+        contentBox.style.flex= "1 1 auto";
         Array.from(children).forEach(child => {
             child.style.fontSize = "0"
-            // child.style.visibility = "visible";
         });
+        explanation.style.padding = "0";
+        explanation.style.height = "0";
+        mainContent.style.height = "calc(100% - 10vw)";
+        answers.style.flex= "1 1 auto";
 
-        setTimeout(function(){
+        leftAnswer.style.width = "50%";
+        leftAnswer.innerHTML = "<h1>"+"réponse 1"+"</h1>";
+        rightAnswer.style.width = "50%";
+        rightAnswer.innerHTML = "<h1>"+"réponse 2"+"</h1>";
 
+        leftAnswer.style.pointerEvents = "auto";
+        rightAnswer.style.pointerEvents = "auto";
+    }, 500)
 
-            leftAnswer.style.width = "50%";
-            leftAnswer.innerHTML = "<h1>"+"réponse 1"+"</h1>";
-            rightAnswer.style.width = "50%";
-            rightAnswer.innerHTML = "<h1>"+"réponse 2"+"</h1>";
-
-            leftAnswer.style.pointerEvents = "auto";
-            rightAnswer.style.pointerEvents = "auto";
-        }, 500);
-    }, 500);
+    // setTimeout(function() {
+    //
+    //
+    //     answerBox.style.width = "100%";
+    //     contentBox.style.flex = "1 1 auto";
+    //
+    //     mainContent.style.height = "calc(100% - 10vw)";
+    //
+    //
+    //     // setTimeout(function(){
+    //     //     answers.style.flex= "1 1 auto";
+    //     //
+    //     //
+    //     // }, 500);
+    // }, 1000);
 
 
 
