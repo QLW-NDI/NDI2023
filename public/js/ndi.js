@@ -1,4 +1,4 @@
-let i = 0;
+let validAnswer = 0;
 let leftAnswer = document.getElementById("left-answer");
 let rightAnswer = document.getElementById("right-answer");
 let question = document.getElementById("question")
@@ -123,15 +123,28 @@ function fillQuestionsFields() {
             leftAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
         }
         explanationText.innerHTML = array[0].explanation;
-        array.shift();
     }
+    console.log(rightAnswer.innerText);
 }
 
 
-leftAnswer.onclick = e => handleOnLeftAnswerClick(e);
-rightAnswer.onclick = e => handleOnRightAnswerClick(e);
+leftAnswer.onclick = e => {
+    if (leftAnswer.innerText === array[0].answerTrue) {
+        validAnswer ++;
+    }
+    handleOnLeftAnswerClick(e);
+};
+rightAnswer.onclick = e => {
+    if (rightAnswer.innerText === array[0].answerTrue) {
+        validAnswer ++;
+    }
+    handleOnRightAnswerClick(e);
+};
 
 next.onclick = function (){
     fillQuestionsFields();
 }
-next.onclick = e => handleOnNextClick(e);
+next.onclick = e => {
+    array.shift();
+    handleOnNextClick(e);
+};
