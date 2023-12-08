@@ -1,7 +1,4 @@
-let i = 0;
-let leftPercentage = 0;
-let rightPercentage = 0;
-
+let validAnswer = 0;
 let leftAnswer = document.getElementById("left-answer");
 let rightAnswer = document.getElementById("right-answer");
 let question = document.getElementById("question")
@@ -131,7 +128,7 @@ function fillQuestionsFields() {
             rightPercentage =  array[0].nbClickFalse / (array[0].nbClickTrue + array[0].nbClickFalse) * 100;
             rightPercentage = Math.round(rightPercentage)+"%";
             leftPercentage = Math.round(leftPercentage)+"%";
-            
+
         } else {
             rightAnswer.innerHTML = "<h1>" + array[0].answerTrue + "</h1>";
             leftAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
@@ -140,19 +137,61 @@ function fillQuestionsFields() {
             rightPercentage = Math.round(rightPercentage)+"%";
             leftPercentage = Math.round(leftPercentage)+"%";
         }
-
-
         explanationText.innerHTML = array[0].explanation;
-        
         array.shift();
     }
 }
 
 
-leftAnswer.onclick = e => handleOnLeftAnswerClick(e);
-rightAnswer.onclick = e => handleOnRightAnswerClick(e);
+leftAnswer.onclick = e => {
+    if (leftAnswer.innerText === array[0].answerTrue) {
+        validAnswer ++;
+        incrementValid();
+    } else {
+        incrementFalse();
+    }
+    handleOnLeftAnswerClick(e);
+};
+rightAnswer.onclick = e => {
+    if (rightAnswer.innerText === array[0].answerTrue) {
+        validAnswer ++;
+        incrementValid();
+    } else {
+        incrementFalse();
+    }
+    handleOnRightAnswerClick(e);
+};
 
 next.onclick = function (){
     fillQuestionsFields();
 }
-next.onclick = e => handleOnNextClick(e);
+next.onclick = e => {
+    array.shift();
+    handleOnNextClick(e);
+};
+
+function incrementValid() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            array = data.array;
+        }
+    };
+    xhr.open('GET', 'incrementTrue/' + array[0].id, false);
+    xhr.send();
+}
+
+function incrementFalse() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            array = data.array;
+        }
+    };
+    xhr.open('GET', 'incrementFalse/' + array[0].id, false);
+    xhr.send();
+}
