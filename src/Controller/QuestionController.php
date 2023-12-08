@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\QuestionRepository;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,8 +16,8 @@ class QuestionController extends AbstractController
         return $this->render('NDI/ndi.html.twig');
     }
 
-    #[Route('/getQuestionContent', name: 'getQuestionContent', methods: ['POST'])]
-    public function sendQuestionsData(QuestionRepository $questionRepository) : JsonResponse
+    #[Route('/getQuestionContent', name: 'getQuestionContent')]
+    public function sendQuestionsData(QuestionRepository $questionRepository): JsonResponse
     {
         $allQuestions = $questionRepository->findAll();
         $randomIndices = array_rand($allQuestions, 10);
@@ -60,4 +58,10 @@ class QuestionController extends AbstractController
 
 
 
+
+    #[Route('/dino',name:'dino')]
+    public function dino(): Response
+    {
+        return $this->render('NDI/dino.html.twig');
+    }
 }
