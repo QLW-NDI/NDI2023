@@ -22,9 +22,6 @@ function resizeAnswers(leftPercentage, rightPercentage) {
 function showExplanation() {
     let children = explanation.children;
 
-    leftAnswer.style.pointerEvents = "none";
-    rightAnswer.style.pointerEvents = "none";
-
     answers.style.flex = "0 1 50px";
     // mainContent.style.margin = "0 10vw 0 10vw";
     setTimeout(function(){
@@ -48,12 +45,16 @@ function showExplanation() {
 }
 
 const handleOnLeftAnswerClick = e => {
+    leftAnswer.style.pointerEvents = "none";
+    rightAnswer.style.pointerEvents = "none";
     resizeAnswers("20%", "80%");
     // showExplanation();
     setTimeout(showExplanation, 1000);
 }
 
 const handleOnRightAnswerClick = e => {
+    leftAnswer.style.pointerEvents = "none";
+    rightAnswer.style.pointerEvents = "none";
     resizeAnswers("80%", "20%")
 }
 
