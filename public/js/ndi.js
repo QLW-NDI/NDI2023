@@ -10,7 +10,7 @@ let next = document.getElementById("next");
 let contentBox = document.getElementById("content-box");
 let answerBox = document.getElementById("answer-box");
 
-let explanationText = document.getElementById("explanationText")
+let explanationText = document.getElementById("explanationText");
 
 window.onload = function () {
     loadQuestionsData();
@@ -39,6 +39,7 @@ function showExplanation() {
         Array.from(children).forEach(child => {
             child.style.fontSize = "initial"
         });
+        explanationText.style.fontSize = "large";
         setTimeout(function() {
             answerBox.style.width = "calc(100% - 100px)";
             next.style.width = "100px";
