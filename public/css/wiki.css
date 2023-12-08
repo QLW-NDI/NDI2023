@@ -1,0 +1,75 @@
+main {
+    margin: 20px 5vw 0 5vw;
+}
+
+#wiki-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.search-bar label {
+    border-radius: 20px;
+}
+
+.search-bar input {
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.search-button {
+    background-color: var(--background-color);
+    border: solid rgba(255, 255, 255, 0.4) 1px;
+    border-radius: 10px;
+    height: 28px;
+    padding: 0 10px 0 10px;
+    margin-top: 1px;
+}
+
+.search-button:hover {
+    background-color: var(--light-effect-color);
+    transition: background-color 0.5s;
+    border: solid var(rgba(255, 255, 255, 0.5)) 1px;
+}
+
+.search-button:active {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.search-button img {
+    padding-top: 2px;
+    width: 20px;
+    height: 15px;
+}
+
+table {
+    margin-top: 10px;
+    border-radius: 20px;
+    border: solid white 1px;
+    width: 100%;
+}
+
+tr > td:last-child {
+    width: 30%;
+}
+
+tr > td:first-child {
+    display: flex;
+}
+
+td {
+    padding: 10px;
+}
+
+tr > td:first-child > a {
+    height: 100%;
+    width: 100%;
+}

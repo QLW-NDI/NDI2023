@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+{% block title %}En savoir plus{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{ asset("css/wiki.css") }}">{% endblock %}
+{% block javascripts %}
+    <script defer type="text/javascript" src="{{ asset("js/konamiCode.js") }}"></script>
+{% endblock %}
+{% block main %}
+    <main>
+        <div id="wiki-nav">
+            <h3>Bienvenue sur la page pour en savoir plus !</h3>
+            <form class="search-bar" method="post" action=" ">
+                <label class="light">
+                    <input type="text" name="searchTerm" placeholder="Rechercher...">
+                </label>
+                <button type="submit" class="search-button"><img src="{{ asset("img/search.svg") }}" alt="Rechercher"></button>
+            </form>
+        </div>
+
+        <table>
+            <tr class="light">
+                <td><strong>Questions</strong></td>
+                <td><strong>Thèmes</strong></td>
+            </tr>
+            <tr class="light">
+                <td><a href="">Ls pingouins sont ils carnivores?</a></td>
+                <td>Pingouin</td>
+            </tr>
+        </table>
+
+
+    </main>
+{% endblock %}
