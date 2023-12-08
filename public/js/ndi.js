@@ -1,6 +1,9 @@
 let validAnswer = 0;
 let leftAnswer = document.getElementById("left-answer");
 let rightAnswer = document.getElementById("right-answer");
+let leftAnswerText ="";
+let rightAnswerText ="";
+let answerTrue = "";
 let question = document.getElementById("question")
 
 let answers = document.getElementById("answers");
@@ -74,12 +77,12 @@ function resetAnswers() {
 }
 
 const handleOnLeftAnswerClick = e => {
-    resizeAnswers("20%", "80%");
+    resizeAnswers();
     setTimeout(showExplanation, 1000);
 }
 
 const handleOnRightAnswerClick = e => {
-    resizeAnswers("100%", "0%");
+    resizeAnswers();
     setTimeout(showExplanation, 1000);
 }
 
@@ -129,6 +132,7 @@ function fillQuestionsFields() {
             rightPercentage = Math.round(rightPercentage)+"%";
             leftPercentage = Math.round(leftPercentage)+"%";
 
+
         } else {
             rightAnswer.innerHTML = "<h1>" + array[0].answerTrue + "</h1>";
             leftAnswer.innerHTML = "<h1>" + array[0].answerFalse + "</h1>";
@@ -137,6 +141,9 @@ function fillQuestionsFields() {
             rightPercentage = Math.round(rightPercentage)+"%";
             leftPercentage = Math.round(leftPercentage)+"%";
         }
+        answerTrue = array[0].answerTrue;
+        rightAnswerText = rightAnswer.textContent;
+        leftAnswerText = leftAnswer.textContent;
         explanationText.innerHTML = array[0].explanation;
         array.shift();
     }
@@ -144,7 +151,7 @@ function fillQuestionsFields() {
 
 
 leftAnswer.onclick = e => {
-    if (leftAnswer.innerText === array[0].answerTrue) {
+    if (leftAnswerText === answerTrue) {
         validAnswer ++;
         incrementValid();
     } else {
@@ -153,7 +160,7 @@ leftAnswer.onclick = e => {
     handleOnLeftAnswerClick(e);
 };
 rightAnswer.onclick = e => {
-    if (rightAnswer.innerText === array[0].answerTrue) {
+    if (rightAnswerText === answerTrue) {
         validAnswer ++;
         incrementValid();
     } else {
@@ -175,8 +182,6 @@ function incrementValid() {
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            array = data.array;
         }
     };
     xhr.open('POST', 'incrementTrue/' + array[0].id, false);
@@ -188,8 +193,6 @@ function incrementFalse() {
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            array = data.array;
         }
     };
     xhr.open('POST', 'incrementFalse/' + array[0].id, false);
